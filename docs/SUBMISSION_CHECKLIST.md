@@ -4,6 +4,7 @@ Target event: [Flare Summer Signal Hackathon](https://dorahacks.io/hackathon/fla
 Track: Interoperable Asset Products  
 Deadline: August 14, 2026  
 Live site: https://xrpflow.huanghar.workers.dev
+Public repository: https://github.com/huangharen/xrpflow-flare
 
 ## Product
 
@@ -30,7 +31,7 @@ Live site: https://xrpflow.huanghar.workers.dev
 
 - [x] `npm run check` succeeds from a clean install.
 - [x] `.env`, private keys, and wallet files are absent from Git.
-- [ ] README links are valid.
+- [x] README links are valid.
 - [x] License and security policy are included.
 - [x] Commit history distinguishes original work from imported dependencies.
 
@@ -38,7 +39,7 @@ Live site: https://xrpflow.huanghar.workers.dev
 
 - [x] One-sentence description is specific and non-promotional.
 - [x] Problem, user, and Flare-specific mechanism are explained.
-- [ ] Public repository URL is included.
+- [x] Public repository URL is included.
 - [x] Public application URL is included.
 - [ ] Coston2 contract and explorer URL are included.
 - [ ] Two-minute video is uploaded.

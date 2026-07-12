@@ -4,6 +4,8 @@ XRPFlow is a treasury workspace for scheduling USD-denominated payments that set
 
 Live demo: https://xrpflow.huanghar.workers.dev
 
+Source code: https://github.com/huangharen/xrpflow-flare
+
 The project is being built for the [**Flare Summer Signal Hackathon**](https://dorahacks.io/hackathon/flaresummersignal/detail) under the **Interoperable Asset Products** track. Final submissions close August 14, 2026.
 
 ## Hackathon contribution boundary
