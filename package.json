@@ -1,0 +1,54 @@
+{
+  "name": "xrpflow",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start",
+    "test": "npm run test:contracts && npm run test:web",
+    "test:web": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test:contracts": "npm run contracts:build && node --test test/XRPFlowEscrow.ts",
+    "contracts:build": "hardhat --build-profile production build --force",
+    "contracts:deploy:coston2": "hardhat --build-profile production run scripts/deploy.ts --network coston2",
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "typecheck": "tsc --noEmit --incremental false",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern artifacts --ignore-pattern cache --ignore-pattern work",
+    "audit:production": "npm audit --omit=dev"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1",
+    "lucide-react": "^1.24.0",
+    "next": "^16.2.10",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "viem": "^2.55.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.44.0",
+    "@nomicfoundation/hardhat-ethers": "^4.0.4",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "ethers": "^6.16.0",
+    "hardhat": "^3.0.17",
+    "react-server-dom-webpack": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "0.0.50",
+    "vite": "^8.1.4",
+    "wrangler": "^4.110.0"
+  },
+  "type": "module",
+  "overrides": {
+    "postcss": "8.5.14"
+  }
+}
