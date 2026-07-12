@@ -44,7 +44,7 @@ Public repository: https://github.com/huangharen/xrpflow-flare
 - [ ] Coston2 contract and explorer URL are included.
 - [ ] Two-minute video is uploaded.
 - [x] Architecture diagram is legible.
-- [ ] Team roles and work completed during the hackathon are stated.
+- [x] Team roles and work completed during the hackathon are stated.
 - [x] Known limitations are stated.
 
 ## Suggested short description

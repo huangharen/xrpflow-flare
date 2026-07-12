@@ -21,6 +21,13 @@ The event permits new projects and meaningful extensions of existing work. This 
 
 The product does not claim FAssets minting/redemption as newly implemented. It uses FTestXRP on Coston2 to demonstrate the settlement mechanics safely.
 
+## Team and hackathon work
+
+XRPFlow is currently a solo-builder entry. The builder role covers product design,
+frontend implementation, Solidity development, test engineering, documentation,
+and deployment. The contribution boundary above states exactly what was completed
+during the hackathon and avoids claiming FAssets minting or redemption as project work.
+
 ## What the prototype proves
 
 - USD-denominated payment instructions can settle in an XRP-based asset without hiding exchange-rate risk.
@@ -134,7 +141,19 @@ npm run contracts:build
 npm run contracts:deploy:coston2
 ```
 
-4. Copy the printed contract address and deployment block into `NEXT_PUBLIC_TREASURY_ADDRESS` and `NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK`.
+4. Verify the source and run the live-chain acceptance scenario:
+
+```bash
+npm run contracts:verify:coston2
+npm run contracts:exercise:coston2
+```
+
+5. Copy the address and deployment block from `deployments/coston2.json` into
+   `NEXT_PUBLIC_TREASURY_ADDRESS` and `NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK`.
+
+The acceptance scenario records create, execute, cancel, and expiry-refund
+transactions in `deployments/coston2-evidence.json` and fails if the final escrow
+backing invariant is false.
 
 The deploy script refuses to run unless the connected chain ID is `114`, verifies the payment token reports `FTestXRP` with six decimals, and resolves FTSOv2 from the registry.
 

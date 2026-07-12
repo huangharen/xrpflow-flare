@@ -14,6 +14,8 @@
     "test:contracts": "npm run contracts:build && node --test test/XRPFlowEscrow.ts",
     "contracts:build": "hardhat --build-profile production build --force",
     "contracts:deploy:coston2": "hardhat --build-profile production run scripts/deploy.ts --network coston2",
+    "contracts:verify:coston2": "hardhat --build-profile production run scripts/verify.ts --network coston2",
+    "contracts:exercise:coston2": "hardhat --build-profile production run scripts/exercise.ts --network coston2",
     "check": "npm run lint && npm run typecheck && npm run test",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern artifacts --ignore-pattern cache --ignore-pattern work",
