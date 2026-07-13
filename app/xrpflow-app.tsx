@@ -50,6 +50,7 @@ import {
   type Hash,
 } from "viem";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import coston2Deployment from "@/deployments/coston2.json";
 
 type EthereumProvider = {
   request: (request: { method: string; params?: unknown[] }) => Promise<unknown>;
@@ -87,14 +88,22 @@ const FTEST_XRP =
   "0x0b6A3645c240605887a5532109323A3E12273dc7" as Address;
 const XRP_USD_FEED =
   "0x015852502f55534400000000000000000000000000" as const;
-const TREASURY_ADDRESS = process.env.NEXT_PUBLIC_TREASURY_ADDRESS as
-  | Address
-  | undefined;
-const TREASURY_DEPLOY_BLOCK = /^\d+$/.test(
-  process.env.NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK ?? "",
-)
-  ? BigInt(process.env.NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK!)
+const configuredTreasuryAddress =
+  process.env.NEXT_PUBLIC_TREASURY_ADDRESS ?? coston2Deployment.address;
+const TREASURY_ADDRESS = isAddress(configuredTreasuryAddress)
+  ? (configuredTreasuryAddress as Address)
+  : undefined;
+const configuredDeployBlock =
+  process.env.NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK ??
+  String(coston2Deployment.deploymentBlock);
+const TREASURY_DEPLOY_BLOCK = /^\d+$/.test(configuredDeployBlock)
+  ? BigInt(configuredDeployBlock)
   : 0n;
+const CONTRACT_CONFIGURED = Boolean(
+  TREASURY_ADDRESS &&
+    TREASURY_ADDRESS.toLowerCase() !== zeroAddress &&
+    TREASURY_DEPLOY_BLOCK > 0n,
+);
 
 const registryAbi = [
   {
@@ -569,7 +578,7 @@ export function XRPFlowApp() {
   const [chainError, setChainError] = useState("");
   const [contractState, setContractState] = useState<
     "unconfigured" | "checking" | "valid" | "invalid"
-  >("unconfigured");
+  >(CONTRACT_CONFIGURED ? "checking" : "unconfigured");
   const [walletAddress, setWalletAddress] = useState<Address | null>(null);
   const [chainId, setChainId] = useState<number | null>(null);
   const [walletPending, setWalletPending] = useState(false);
@@ -609,12 +618,7 @@ export function XRPFlowApp() {
 
   const connected = walletAddress !== null;
   const correctNetwork = chainId === COSTON2.id;
-  const contractConfigured = Boolean(
-    TREASURY_ADDRESS &&
-      isAddress(TREASURY_ADDRESS) &&
-      TREASURY_ADDRESS.toLowerCase() !== zeroAddress &&
-      TREASURY_DEPLOY_BLOCK > 0n,
-  );
+  const contractConfigured = CONTRACT_CONFIGURED;
   const isLiveContract = contractConfigured && contractState === "valid";
   const liveMode = Boolean(connected && correctNetwork && isLiveContract);
   const verifiedWalletBalanceFxrp =

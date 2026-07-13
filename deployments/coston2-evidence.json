@@ -1,0 +1,21 @@
+{
+  "network": "coston2",
+  "chainId": 114,
+  "contract": "0xE6fCF19eb7Fc9Ba0C9515C1C0901d461260dcab9",
+  "actor": "0x03F0B5d49e2c6d3C08A37fd788157fd416364304",
+  "recipient": "0x1111111111111111111111111111111111111111",
+  "usdAmount6": "100000",
+  "reserveFxrp6": "105772",
+  "transactions": {
+    "approval": "0x17af4905f1d3df64cf56473c8f481d62459228b76187c10c14e488bc57e2dea7",
+    "createPaid": "0xc15f0865d5f49eb65eab6023b17264dc7297c3006992ca0e7f70ed1b1ec89c21",
+    "executePaid": "0x90dd1f065c70746c4f8a8c66d0df464c13f5de10cd1f067149d1afa52005943b",
+    "createCancelled": "0x62c532d042c9ad39072c8f09741ce269c84fbe42284d9a6468257817a860196e",
+    "cancel": "0x40a7de7c099399165d2364df22543dc2605bfa896a0ff87b742197d410340370",
+    "createExpired": "0x981014b302fe31f291c8cc16f4c7b1751b6b94f8d2caa516a5b1ef10675945ae",
+    "refundExpired": "0x14d98236f811cfd761879323571e60cf79c9b6604733ab9964ab607a0ac0394d"
+  },
+  "explorer": "https://coston2-explorer.flare.network/address/0xE6fCF19eb7Fc9Ba0C9515C1C0901d461260dcab9",
+  "fullyBacked": true,
+  "completedAt": "2026-07-13T01:26:49.226Z"
+}

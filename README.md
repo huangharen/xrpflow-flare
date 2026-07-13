@@ -48,7 +48,9 @@ during the hackathon and avoids claiming FAssets minting or redemption as projec
 The interface runs in two explicit modes:
 
 1. **Demo workspace** works without a wallet and uses labeled sample records.
-2. **Coston2 contract mode** activates after a wallet is connected and `NEXT_PUBLIC_TREASURY_ADDRESS` plus `NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK` point to a deployed `XRPFlowEscrow` contract.
+2. **Coston2 contract mode** activates after a wallet is connected. The verified
+   deployment is bundled in `deployments/coston2.json`; environment variables may
+   override it for a future deployment.
 
 ## Settlement flow
 
@@ -85,6 +87,21 @@ sequenceDiagram
 | FlareContractRegistry | `0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019` |
 | XRP/USD feed ID | `0x015852502f55534400000000000000000000000000` |
 
+## Verified Coston2 deployment
+
+| Evidence | Link |
+| --- | --- |
+| XRPFlowEscrow | [`0xE6fC…cab9`](https://coston2-explorer.flare.network/address/0xE6fCF19eb7Fc9Ba0C9515C1C0901d461260dcab9?tab=contract) |
+| Deployment transaction | [`0x2ef2…a124`](https://coston2-explorer.flare.network/tx/0x2ef24d60e80f5c6d941f18c88891196f7cec965ec9b77cb78f5105ed48d2a124) |
+| Create payment | [`0xc15f…9c21`](https://coston2-explorer.flare.network/tx/0xc15f0865d5f49eb65eab6023b17264dc7297c3006992ca0e7f70ed1b1ec89c21) |
+| Execute payment | [`0x90dd…943b`](https://coston2-explorer.flare.network/tx/0x90dd1f065c70746c4f8a8c66d0df464c13f5de10cd1f067149d1afa52005943b) |
+| Cancel payment | [`0x40a7…0370`](https://coston2-explorer.flare.network/tx/0x40a7de7c099399165d2364df22543dc2605bfa896a0ff87b742197d410340370) |
+| Expiry refund | [`0x14d9…394d`](https://coston2-explorer.flare.network/tx/0x14d98236f811cfd761879323571e60cf79c9b6604733ab9964ab607a0ac0394d) |
+
+The Explorer reports the source as verified. The machine-readable deployment and
+acceptance evidence live in `deployments/coston2.json` and
+`deployments/coston2-evidence.json`.
+
 FTestXRP has six decimals and no monetary value. The deploy script resolves FTSOv2 through `FlareContractRegistry` instead of hardcoding an oracle address.
 
 ## Run locally
@@ -104,7 +121,10 @@ The demo workspace needs no environment variables. To enable live contract trans
 cp .env.example .env
 ```
 
-Then set `NEXT_PUBLIC_TREASURY_ADDRESS` and `NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK` to the values printed by the deploy script, and restart the development server. The block value keeps event queries inside the public RPC range limit.
+The checked-in Coston2 deployment works without environment variables. Set
+`NEXT_PUBLIC_TREASURY_ADDRESS` and `NEXT_PUBLIC_TREASURY_DEPLOY_BLOCK` only to
+override it, then restart the development server. The block value keeps event
+queries inside the public RPC range limit.
 
 ## Test and build
 

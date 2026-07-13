@@ -37,12 +37,13 @@ test("server-renders the XRPFlow application shell", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
-test("keeps test assets and prototype state explicit", async () => {
+test("keeps test assets and disconnected contract checks explicit", async () => {
   const response = await render();
   const html = await response.text();
 
-  assert.match(html, /prototype workspace/i);
+  assert.match(html, /Verifying the configured treasury contract/i);
+  assert.match(html, /Verifying contract/i);
   assert.match(html, /Test assets only/i);
   assert.match(html, /has no monetary value/i);
-  assert.match(html, /Prototype mode/i);
+  assert.doesNotMatch(html, /Contract invalid/i);
 });

@@ -4,9 +4,8 @@
 
 - Open the site at desktop width.
 - Keep the Coston2 explorer open in another tab.
-- Fund an administrator wallet and recipient wallet with C2FLR.
-- Fund the administrator wallet with FTestXRP.
-- Confirm `NEXT_PUBLIC_TREASURY_ADDRESS` points to the verified deployment.
+- Fund a dedicated demo payer wallet with C2FLR and FTestXRP. The contract has no administrator role.
+- Confirm the bundled deployment opens as verified on Coston2 Explorer.
 - Create one payment that is already ready to execute if the live demo will include settlement.
 
 ## Script
@@ -52,4 +51,4 @@ Closing line:
 
 ## Fallback
 
-If the RPC or wallet is unavailable, use the labeled demo workspace. Do not imply the sample transaction hashes were produced in the current session. Explain the interruption once, show the complete UX, then use the explorer link from a previously verified deployment.
+If the RPC or wallet is unavailable, use the labeled demo workspace. Do not imply the sample transaction hashes were produced in the current session. Explain the interruption once, show the complete UX, then use the bundled verified deployment and transaction links in `deployments/coston2-evidence.json`.

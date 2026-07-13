@@ -17,7 +17,7 @@ The application provides:
 - live FTSOv2 XRP/USD reads through FlareContractRegistry;
 - reserve estimation;
 - FTestXRP approval and payment creation;
-- explicit demo fallback when no deployed contract is configured;
+- explicit demo fallback when no compatible wallet is connected;
 - responsive treasury, payment, activity, and settings views.
 
 No private key is handled by the web application. Transactions are signed by the user's wallet.

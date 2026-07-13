@@ -6,6 +6,7 @@ const FTEST_XRP = "0x0b6A3645c240605887a5532109323A3E12273dc7";
 const EXPLORER = "https://coston2-explorer.flare.network";
 const USD_AMOUNT_6 = 100_000n;
 const RECIPIENT = "0x1111111111111111111111111111111111111111";
+const GAS_LIMIT = 500_000n;
 const deploymentPath = path.resolve("deployments/coston2.json");
 
 const deployment = JSON.parse(await readFile(deploymentPath, "utf8")) as {
@@ -16,7 +17,7 @@ if (deployment.chainId !== 114 || !/^0x[0-9a-fA-F]{40}$/.test(deployment.address
   throw new Error("A valid deployments/coston2.json is required.");
 }
 
-const { ethers } = await network.connect();
+const { ethers } = await network.create();
 const [actor] = await ethers.getSigners();
 const connected = await ethers.provider.getNetwork();
 if (connected.chainId !== 114n) {
@@ -53,7 +54,9 @@ if (tokenBalance < requiredBalance) {
   );
 }
 
-const approveTx = await token.approve(deployment.address, requiredBalance);
+const approveTx = await token.approve(deployment.address, requiredBalance, {
+  gasLimit: GAS_LIMIT,
+});
 const approveReceipt = await approveTx.wait();
 if (!approveReceipt || approveReceipt.status !== 1) throw new Error("Token approval failed.");
 
@@ -74,6 +77,7 @@ async function create(
     dueAt,
     expiresAt,
     ethers.id(`xrpflow-coston2-${label}`),
+    { gasLimit: GAS_LIMIT },
   );
   const receipt = await tx.wait();
   if (!receipt || receipt.status !== 1) throw new Error(`${label} creation failed.`);
@@ -92,17 +96,17 @@ const paid = await create("paid", now + 15n, now + 180n);
 const cancelled = await create("cancelled", now + 300n, now + 600n);
 const expired = await create("expired", now + 15n, now + 35n);
 
-const cancelTx = await escrow.cancelPayment(cancelled.id);
+const cancelTx = await escrow.cancelPayment(cancelled.id, { gasLimit: GAS_LIMIT });
 const cancelReceipt = await cancelTx.wait();
 if (!cancelReceipt || cancelReceipt.status !== 1) throw new Error("Cancellation failed.");
 
-await waitUntilTimestamp(now + 15n);
-const executeTx = await escrow.executePayment(paid.id);
+await waitUntilTimestamp(now + 20n);
+const executeTx = await escrow.executePayment(paid.id, { gasLimit: GAS_LIMIT });
 const executeReceipt = await executeTx.wait();
 if (!executeReceipt || executeReceipt.status !== 1) throw new Error("Execution failed.");
 
-await waitUntilTimestamp(now + 35n);
-const refundTx = await escrow.refundExpired(expired.id);
+await waitUntilTimestamp(now + 50n);
+const refundTx = await escrow.refundExpired(expired.id, { gasLimit: GAS_LIMIT });
 const refundReceipt = await refundTx.wait();
 if (!refundReceipt || refundReceipt.status !== 1) throw new Error("Expiry refund failed.");
 

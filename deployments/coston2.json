@@ -1,0 +1,15 @@
+{
+  "network": "coston2",
+  "chainId": 114,
+  "contract": "XRPFlowEscrow",
+  "address": "0xE6fCF19eb7Fc9Ba0C9515C1C0901d461260dcab9",
+  "transactionHash": "0x2ef24d60e80f5c6d941f18c88891196f7cec965ec9b77cb78f5105ed48d2a124",
+  "deploymentBlock": 32787853,
+  "deployer": "0x03F0B5d49e2c6d3C08A37fd788157fd416364304",
+  "paymentToken": "0x0b6A3645c240605887a5532109323A3E12273dc7",
+  "ftsoV2": "0xC4e9c78EA53db782E28f28Fdf80BaF59336B304d",
+  "explorer": "https://coston2-explorer.flare.network/address/0xE6fCF19eb7Fc9Ba0C9515C1C0901d461260dcab9",
+  "deployedAt": "2026-07-13T01:19:11.268Z",
+  "verified": true,
+  "verifiedAt": "2026-07-13T01:20:02.248Z"
+}

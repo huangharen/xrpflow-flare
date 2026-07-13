@@ -13,7 +13,7 @@ const tokenAbi = [
   "function decimals() view returns (uint8)",
 ];
 
-const { ethers } = await network.connect();
+const { ethers } = await network.create();
 const [deployer] = await ethers.getSigners();
 const connection = await ethers.provider.getNetwork();
 
