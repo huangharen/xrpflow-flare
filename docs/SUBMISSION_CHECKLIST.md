@@ -11,7 +11,7 @@ Public repository: https://github.com/huangharen/xrpflow-flare
 - [x] Public site loads without authentication.
 - [x] Desktop and mobile layouts are usable.
 - [x] Demo records are visibly labeled.
-- [ ] Wallet connection and Coston2 switching work.
+- [ ] Optional manual QA with an installed EVM browser wallet is complete.
 - [x] Live FTSOv2 quote resolves through FlareContractRegistry.
 - [x] New payment validation handles invalid address, amount, date, stale quote, wallet rejection, and transaction failure.
 - [x] Contract address and explorer links match the final deployment.
@@ -42,10 +42,11 @@ Public repository: https://github.com/huangharen/xrpflow-flare
 - [x] Public repository URL is included.
 - [x] Public application URL is included.
 - [x] Coston2 contract and explorer URL are included.
-- [ ] Two-minute video is uploaded.
+- [x] The required demo/video/working-app field is satisfied by the public working app.
 - [x] Architecture diagram is legible.
 - [x] Team roles and work completed during the hackathon are stated.
 - [x] Known limitations are stated.
+- [ ] DoraHacks account is logged in and the final BUIDL form is submitted.
 
 ## Suggested short description
 

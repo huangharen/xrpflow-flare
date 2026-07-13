@@ -21,6 +21,13 @@ The event permits new projects and meaningful extensions of existing work. This 
 
 The product does not claim FAssets minting/redemption as newly implemented. It uses FTestXRP on Coston2 to demonstrate the settlement mechanics safely.
 
+## Target user
+
+XRPFlow is designed for remote-first studios, agencies, DAOs, and small global
+teams that hold an XRP-based treasury but agree contributor or vendor payments in
+USD terms. It gives operators a bounded reserve and gives recipients a transparent
+onchain instruction instead of exposing either side to an unexplained conversion.
+
 ## Team and hackathon work
 
 XRPFlow is currently a solo-builder entry. The builder role covers product design,
@@ -208,6 +215,15 @@ docs/                   Architecture, demo script, and submission checklist
 - FAssets minting and redemption remain separate from the payment contract.
 - Demo records are local presentation data and are not read from the chain.
 - Mainnet deployment requires a separate review, verified addresses, and an external security assessment.
+
+## Roadmap
+
+1. Validate the workflow with a small remote-team treasury pilot and measure
+   payment creation, settlement, and failed-execution recovery.
+2. Add recurring instructions and optional permissionless keeper execution without
+   introducing an administrator withdrawal path.
+3. Integrate the production FAssets lifecycle separately from XRPFlow settlement,
+   then complete an external security review before any Flare Mainnet release.
 
 ## License
 
